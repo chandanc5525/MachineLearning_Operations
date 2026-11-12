@@ -1,0 +1,30 @@
+
+[project]
+name = "machinelearning-operations"
+version = "1.0.0"
+
+authors = [
+    { name = "Chandan Chaudhari, email = chaudhari.chandan22@gmail.com" }
+]
+
+description = "End-to-end Machine Learning Operations project using Python  Application"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+
+dependencies = [
+  "chandan-aiops>=1.5.5",
+  "dvc>=3.67.1",
+  "fastapi>=0.162.5",
+  "flaml[automl]>=2.8.0",
+  "gradio>=6.32.0",
+  "ipykernel>=7.4.0",
+  "matplotlib>=3.11.2",
+  "numpy>=2.5.4",
+  "pandas>=3.1.1",
+  "scikit-learn>=1.9.1",
+  "seaborn>=0.13.2",
+  "streamlit>=1.67.0",
+]
+
+[tool.uv]
+package = false
