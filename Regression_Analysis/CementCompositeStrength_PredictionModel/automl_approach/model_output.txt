@@ -1,0 +1,9 @@
+         Model  R2 Score     RMSE      MAE
+xgb_limitdepth  0.934359 4.147876 2.855401
+
+Best FLAML Model: xgb_limitdepth
+
+Best Hyperparameters:
+{'n_estimators': 256, 'max_depth': 5, 'min_child_weight': np.float64(0.6352610241795509), 'learning_rate': np.float64(0.18613909203300885), 'subsample': 1.0, 'colsample_bylevel': np.float64(0.9315737050592698), 'colsample_bytree': np.float64(0.6239642770014845), 'reg_alpha': np.float64(0.01341486822050464), 'reg_lambda': np.float64(1.4165999017956077)}
+
+Model saved successfully: models/concrete_flaml_automl.pkl

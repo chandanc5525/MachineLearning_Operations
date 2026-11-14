@@ -61,23 +61,42 @@ def data_preprocessing(df):
 # Step3: Model Building
 def model_build(X_train,X_test,y_train,y_test):
     
-    model = DecisionTreeRegressor()
+    model = DecisionTreeRegressor(random_state = 1) # Model Initialization
     model.fit(X_train,y_train) # Seen Data
     y_pred = model.predict(X_test) # Unseen Data 
     
     score = r2_score(y_test,y_pred) # (actual value,predicted value)
     
-    return score 
+    return score,y_pred 
+
+# Plot Model Performance
+
+def plot_model_performance(y_test, y_pred):
+    fig, ax = plt.subplots(1, 2, figsize=(10, 6))
+
+    sns.regplot(x=y_test, y=y_pred, color="red", ax=ax[0])
+    ax[0].set_title("Actual vs Predicted Values")
+    ax[0].set_xlabel("Actual Values")
+    ax[0].set_ylabel("Predicted Values")
+
+    sns.kdeplot(y_test - y_pred, ax=ax[1])
+    ax[1].set_title("Residual Error Distribution")
+    ax[1].set_xlabel("Residual Errors")
+    ax[1].set_ylabel("Density")
+    plt.title('Decision Tree Model Performance')
+    plt.tight_layout()
+    plt.show()
 
 # Define Orchestration Layer Design : Entry Point 
-
 def main(): # Function Definition
     # Step1: Data Ingestion
     df = data_ingestion() 
     # Step2: Data Preprocessing and Cleaning
     X_train,X_test,y_train,y_test = data_preprocessing(df)
     # Step3: Model Building
-    score = model_build(X_train,X_test,y_train,y_test)  
-    print("R2 Score is : ",score)
+    score,y_pred = model_build(X_train,X_test,y_train,y_test)  
+    print("DecisionTreeRegressor r2 score : ",score)
+    # Step4: Model Performance Plotting
+    plot_model_performance(y_test,y_pred)
     
-main()      # Function calling
+main() # Function calling
